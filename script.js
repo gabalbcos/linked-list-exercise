@@ -32,12 +32,52 @@ class LinkedList {
         }
         current.next = node;
         }
+
         this.size += 1;
     }
     // insert at index
+    insertAt(data, index) {
+    // edge case where index is out of range    
+        if (index > 0 && index > this.size){
+        return;
+    }
 
+    if(index === 0) {
+        this.head = new Node(data, this.head);
+        return;
+    }
+    
+
+    const node = new Node(data); 
+    let current, previous
+
+    // set current to first
+        current = this.head;
+        let count = 0;
+
+        while(count < index) {
+            previous = current; // node before
+            count += 1;
+            current = current.next; // node after index 
+        }
+        node.next = current;
+        previous.next = node;
+
+        this.size += 1;
+    }
     // get at index 
-
+    getAt(index) {
+        let current = this.head;
+        let count = 0;
+        while (current) {
+            if (count === index) {
+                console.log(current.data)
+            }
+            count += 1;
+            current = current.next;
+        }
+        return;
+    }
     // remove at index
 
     // clear list
@@ -55,9 +95,11 @@ class LinkedList {
 
 const ll = new LinkedList();
 
-console.log(ll)
 
 ll.insertLast(400)
 ll.insertFirst(100)
 ll.insertFirst(150)
-ll.printListData()
+ll.insertFirst(200)
+ll.insertAt(333, 2)
+//ll.printListData()
+ll.getAt(2)
