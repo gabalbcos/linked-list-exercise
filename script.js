@@ -79,9 +79,35 @@ class LinkedList {
         return;
     }
     // remove at index
+    removeAt(index) {
+        if (index > 0 && index > this.size) {
+            return;
+        }
+        let current = this.head;
+        let previous;
+        let count = 0;
+
+        // Remove first
+        if (index === 0) {
+            this.head = current.next;
+        } else {
+            while (count < index) {
+                count += 1;
+                previous = current;
+                current = current.next;
+            }
+        previous.next = current.next;
+        }
+        
+        this.size -= 1;
+
+    }
 
     // clear list
-
+    clearList() {
+        this.head = null;
+        this.size = 0;
+    }
     // print list data
     printListData() {
         let current = this.head;
