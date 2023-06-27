@@ -1,7 +1,7 @@
 // Create chessboard 
 const gameBoard = () => {
     // Initiate variables and create chessboard table
-    const defaultStartLocation = [0,0];
+    const defaultStartLocation = [4,5];
     const coordArray = [];
     const chessTable = document.createElement("table");
 
@@ -48,4 +48,4 @@ const gameBoard = () => {
 }
 
 export {gameBoard};
-alert("gi")
+
