@@ -10,4 +10,3 @@ const gameBoard = (x,y) => {
     return boardCoordinates;
 }
 
-gameBoard(8,8)
