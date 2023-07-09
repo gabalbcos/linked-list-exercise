@@ -64,5 +64,16 @@ class Stack {
         return temp.value
 
         }
-    }
+}
 
+// Creating a new stack
+const stack1 = new Stack;
+
+// adding items
+stack1.push('value1')
+stack1.push('value2')
+stack1.push('value3')
+
+
+stack1.pop()
+console.log(stack1.size)
