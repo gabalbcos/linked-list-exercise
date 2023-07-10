@@ -135,4 +135,25 @@ class singlyLinkedList {
         }
         return current;
     }
+    shift(){
+        if(!this.head) return undefined;
+        var currentHead = this.head;
+        this.head = currentHead.next;
+        this.length -= 1;
+        if(this.length === 0){
+            this.tail = null;
+        }
+        return currentHead;
+    }
+    unshift(val){
+        const newNode = new Node(val);
+        if(!this.head){
+            this.head = newNode;
+            this.tail = newNode;
+        }
+            newNode.next = currentHead;
+            this.head = newNode;
+            this.length += 1;
+            return this
+    }
 } 
