@@ -11,7 +11,7 @@ let number = 1052;
 let checkFor5 = number.toString()
 console.log(checkFor5.includes(5))
 
-// Stack
+/*// Stack
 // First create Node Class for each node in the stack
 class Node {
     constructor(value) {
@@ -76,4 +76,63 @@ stack1.push('value3')
 
 
 stack1.pop()
-console.log(stack1.size)
+console.log(stack1.size)*/
+
+// Singly Linked List
+// First create a Node class  
+class Node {
+    constructor(val){
+        this.val = val;
+        this.next = null
+    }
+}
+
+// Create class for the list
+class singlyLinkedList {
+    constructor(){
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+    }
+
+    // Push method adds and assigns value to the tail
+    push(val) {
+        const newNode = new Node(val);
+    // Check if there is a first node and create it if not    
+        if(!this.head){
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+    // Add the next for the last node and change it to the current node            
+            this.tail.next = newNode;
+            this.tail = newNode;
+        }
+        this.length += 1;
+        return this
+    }
+    // Pop removes the tail
+    pop(){
+    // Check if the list is not empty    
+        if(!this.head) return undefined;
+    // Set starting variables to iterate until the last list item    
+        const currentNode = this.head;
+        const newTail = this.head;
+    // Iterate to find the second to last node
+        while (current.next) {
+            newTail = currentNode;
+            currentNode = currentNode.next;
+        }
+    // Set the tail to the second to last value (newTail)    
+        this.tail = newTail;
+    // Erase the next value    
+        this.tail.next = null;
+    // Subtract 1 from the length of th list    
+        this.length -= 1;
+    // If the length becomes 0, empty all values    
+        if(this.length === 0){
+            this.head = null;
+            this.tail = null;
+        }
+        return current;
+    }
+} 
