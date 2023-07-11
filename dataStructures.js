@@ -156,4 +156,63 @@ class singlyLinkedList {
             this.length += 1;
             return this
     }
+    get(index){
+        if(index < 0 || index > this.length) return null;
+        let counter = 0;
+        let currentNode = this.head;
+        while(counter !== index){
+            currentNode = currentNode.next;
+            counter += 1;
+        }
+        return currentNode
+    }
+    set(index,val){
+        const foundNode = this.get(index);
+        if(foundNode){
+            foundNode.val = val;
+            return true;
+        }
+        return false;
+    }
+    // Insert method takes an index number and adds the new value there
+    insert(index, val){
+        // First index validation and return true or false
+        if(index < 0 || index > this.length) return false;
+        if(index === this.length) return !!this.push(val);
+        if(index === 0) return !!this.unshift(val)
+
+        // Add value between two nodes
+        const newNode = new Node(val);
+        const prev = this.get(index - 1);
+        const temp = this.get(index);
+        prev.next = newNode;
+        newNode.next = temp;
+        this.length += 1;
+        return true;
+    }
+    // Remove gets an index as a parameter and removes it
+    remove(index){
+        if(index < 0 || index > this.length) return undefined;
+        if(index === 0) return this.shift();
+        if(index === this.length - 1) return this.pop();
+        const previousNode = this.get(index - 1);
+        const removed = previousNode.next;
+        previousNode.next = removed.next;
+        this.length -= 1;
+        return removed;
+    }
+    // Reverse all pointers so the head becomes the tail
+    reverse(){
+        const node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        let next;
+        const prev = null;
+        for(let i = 0; i < this.length; i +=1){
+            next = node.next;
+            node.next = prev;
+            node = next;
+        }
+        return this;
+    }
 } 
