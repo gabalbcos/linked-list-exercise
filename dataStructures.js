@@ -233,4 +233,62 @@ class DoublyLinkedList {
         this.tail = null;
         this.size = 0;       
     }
+    push(val){
+        const newNode = new Node(val);
+        if(!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.tail.next = newNode;
+            newNode.prev = this.tail;
+            this.tail = newNode;
+        }
+        this.size += 1;
+        return this;
+    }
+    pop(){
+        // If the list is empty
+        if(!this.head) return undefined
+        const poppedNode = this.tail;
+        // If there is only a head
+        if(this.length === 1){
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.tail = poppedNode.prev;
+            this.tail.next = null;
+            poppedNode.prev = null;
+        }
+        this.size -= 1;
+        return poppedNode;
+    }
+    // Shift to remove the head of the list
+    shift(){
+        if(this.size === 0) return undefined;
+        const oldHead = this.head;
+        if(this.size === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.head = oldHead.next;
+            this.head.prev = null;
+            oldHead.next = null;
+        }
+        this.size -= 1;
+        return oldHead
+    }
+    unshift(val){
+        const newNode = new Node(val);
+        if(this.size === 0) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.head.prev = newNode;
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length += 1;
+        return this;
+    }
+
 }
