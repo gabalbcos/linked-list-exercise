@@ -77,7 +77,7 @@ stack1.push('value3')
 
 stack1.pop()
 console.log(stack1.size)*/
-
+/*
 // Singly Linked List
 // First create a Node class  
 class Node {
@@ -208,6 +208,7 @@ class singlyLinkedList {
         this.tail = node;
         let next;
         const prev = null;
+        // Iterate through all the nodes changing the next to previous
         for(let i = 0; i < this.length; i +=1){
             next = node.next;
             node.next = prev;
@@ -216,3 +217,20 @@ class singlyLinkedList {
         return this;
     }
 } 
+*/
+// Doubly linked list
+class Node {
+    constructor(val){
+        this.val = val;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+class DoublyLinkedList {
+    constructor(){
+        this.head = null;
+        this.tail = null;
+        this.size = 0;       
+    }
+}
