@@ -290,5 +290,58 @@ class DoublyLinkedList {
         this.length += 1;
         return this;
     }
+    // Get method takes an index number as parameter and returns the value
+    get(index){
+        if(index < 0 || index > this.size) return null;
+    // Initiate counter and current variables
+        let current, count;
+    // Check if the search starts from the tail or from the head    
+    // If the index is smaller than half of the size then start from head    
+        if(index <= this.size/2){
+            count = 0;
+            current = this.head
+            while(count !== index){
+                current = current.next;
+                count += 1;
+            }
+        } else {
+            count = this.length-1;
+            current = this.tail;
+            while(count !== index) {
+                current = current.prev;
+                count -= 1;
+            }
+        }
+        return current;
+    }
+    // Set method takes an index number and values as parameters and modifies the node at the index with the value
+    set(index, value){
+        // find the node by using the get method
+        var foundNode = this.get(index);
+        if(foundNode != null){
+            foundNode.val = val;
+            return true;
+        }
+        return false;
+    }
+    // Insert method takes an index and value, and add the newnode at that index
+    insert(index, val) {
+        // Node outside the list INVALID
+        if(index < 0 || index > this.length) return false;
+        // Add node to the start of the list
+        if(index === 0) return !!this.unshift(val);
+        // Add node to the tail of the list
+        if(index === this.length) return !!this.push(val);
+        // Get the node before the index
+        var newNode = new Node(val);
+        var beforeNode = this.get(index -1);
+        var afterNode = beforeNode.next;
 
+        beforeNode.next = newNode;
+        newNode.prev = beforeNode;
+        newNode.next = afterNode;
+        afterNode.prev = newNode;;
+        this.size += 1;
+        return true;
+    }
 }
