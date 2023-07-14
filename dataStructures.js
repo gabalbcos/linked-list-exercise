@@ -346,6 +346,7 @@ class DoublyLinkedList {
         return true;
     }
 }*/
+/*
 // Binary Search Tree
 // Node Class
 class Node {
@@ -433,4 +434,32 @@ class BinarySearchTree {
         return false;
     }
 }
-
+*/
+// Creating a class for the graph
+class Graph{
+    constructor(){
+        this.adjacenlyList = {};
+    }
+    // Add Node method takes a node value as a param and add's it's key to the adjacencyList
+    addNode(node){
+        if(!this.adjacencyList[node]) this.adjacenlyList[node] = [];
+    }
+    // AddConnection takes two nodes as parameters, and adds each node to other array
+    addConnection(node1,node2) {
+        this.adjacenlyList[node1].push(node2);
+        this.adjacenlyList[node2].push(node1);
+    }
+    // Remove connection method takes two nodes as parameters and removes each node from the adj list from eachother
+    removeConnection(node1, node2) {
+        this.adjacenlyList[node1] = this.adjacenlyList[node1.filter](v => v !== node2);
+        this.adjacenlyList[node2] = this.adjacenlyList[node2].filter(v => v !== node1);
+    }
+    // Remove node takes a node value as parameter and removes all the connections
+    removeNode(node){
+        while(this.adjacenlyList[node].length) {
+            const adjacentNode = this.adjacenlyList[node].pop();
+            this.removeConnection(node, adjacentNode);
+        }
+        delete this.adjacencyList[node];
+    }
+}
