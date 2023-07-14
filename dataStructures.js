@@ -405,7 +405,7 @@ class BinarySearchTree {
         while(current && !found){
             if(val < current.val){
                 current = current.left;
-            } else if (value > current.value){
+            } else if (val > current.val){
                 current = current.right;
             } else {
                 found = true;
@@ -415,5 +415,22 @@ class BinarySearchTree {
         if(!found) return undefined;
         return current;
     } 
+    // Contains methods takes a value as a parameter and returns true if it's found or false if not
+    contains(val){
+        // Check if there is root
+        if(this.root === null) return false;
+        let current = this.root,
+        found = false;
+        while(current && !found){
+            if(val < current.val){
+                current = current.left;
+            } else if (val > current.val){
+                current = current.right;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
