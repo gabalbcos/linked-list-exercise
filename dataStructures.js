@@ -376,7 +376,7 @@ class BinarySearchTree {
             // Check if the value is already in the tree
             if(val === current.val) return undefined;
             // Check if the value is smaller than the node
-            if(value < current.value){
+            if(val < current.val){
                 // Check if there is a node to the left
                 if(current.left === null){
                     current.left = newNode;
@@ -394,5 +394,26 @@ class BinarySearchTree {
             }
         }
     }
+    // Find method takes a value as a parameter and iterates through the tree
+    // If the value is found it returns the corresponding node and if not it returns undefined
+    find(val){
+        // Check if there is a root
+        if(this.root === null) return false;
+        let current = this.root,
+        found = false;
+        // When the tree ends current will be null and if it's found !found will return false
+        while(current && !found){
+            if(val < current.val){
+                current = current.left;
+            } else if (value > current.value){
+                current = current.right;
+            } else {
+                found = true;
+            }
+        }
+        // If there is no value found current will become null and execute the last bit
+        if(!found) return undefined;
+        return current;
+    } 
 }
 
