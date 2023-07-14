@@ -218,6 +218,7 @@ class singlyLinkedList {
     }
 } 
 */
+/*
 // Doubly linked list
 class Node {
     constructor(val){
@@ -344,4 +345,54 @@ class DoublyLinkedList {
         this.size += 1;
         return true;
     }
+}*/
+// Binary Search Tree
+// Node Class
+class Node {
+    constructor(val){
+        this.val = val;
+        this.parent = null;
+        this.left = null;
+        this.right = null;
+    }
 }
+// BST class
+class BinarySearchTree {
+    // Only has one property the root node
+    constructor(){
+        this.root = null;
+    }
+    // Insert Method take a value as a parameter and insert it in the tree
+    insert(val){
+        const newNode = new Node(val);
+        // Check if there is a root and add the value as the root if not
+        if(!this.root){
+            this.root = newNode;
+            return this;
+        }
+        // Begin search for the nodes
+        let current = this.root;
+        while(true){
+            // Check if the value is already in the tree
+            if(val === current.val) return undefined;
+            // Check if the value is smaller than the node
+            if(value < current.value){
+                // Check if there is a node to the left
+                if(current.left === null){
+                    current.left = newNode;
+                    return this;
+                }
+                // Go to the left node
+                current = current.left;
+            } else {
+                // Check for the right side
+                if(current.right === null){
+                    current.right = newNode;
+                    return this;
+                }
+                current = current.right
+            }
+        }
+    }
+}
+
